@@ -21,17 +21,9 @@ if(isset($_POST['update']))
     $phone = $_POST['phone'];
     $google_map = $_POST['google_map'];
 
-    mysqli_query($conn,"
-    UPDATE shops
-    SET
-    shop_name='$shop_name',
-    address='$address',
-    area='$area',
-    city='$city',
-    phone='$phone',
-    google_map='$google_map'
-    WHERE owner_id='$owner_id'
-    ");
+$stmt = mysqli_prepare($conn, "UPDATE shops SET shop_name=?, address=?, area=?, city=?, phone=?, google_map=? WHERE owner_id=?");
+mysqli_stmt_bind_param($stmt, "ssssssi", $shop_name, $address, $area, $city, $phone, $google_map, $owner_id);
+mysqli_stmt_execute($stmt);
 
     echo "<script>
     alert('Shop Updated Successfully');

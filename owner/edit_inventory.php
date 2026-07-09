@@ -50,16 +50,16 @@ if (isset($_POST['update'])) {
 </head>
 <body>
 <div class="form-container">
-<h2>Edit: <?php echo $item['product_name']; ?></h2>
+<h2>Edit: <?php echo htmlspecialchars($item['product_name']); ?></h2>
 <form method="POST">
 
 <input type="number" name="quantity" placeholder="Quantity" value="<?php echo $item['quantity']; ?>" required>
 
-<input type="number" step="0.01" name="price" placeholder="Price" value="<?php echo $item['price']; ?>" required>
+<input type="number" step="0.01" name="price" placeholder="Price" value="<?php echo htmlspecialchars($item['price']); ?>" required>
 
 <input type="text" name="size" placeholder="Size (e.g. S,M,L,XL)" value="<?php echo $item['size']; ?>">
 
-<input type="text" name="color" placeholder="Color (e.g. Black, White)" value="<?php echo $item['color']; ?>">
+<input type="text" name="color" placeholder="Color (e.g. Black, White)" value="<?php echo htmlspecialchars($item['color']); ?>">
 
 <select name="stock">
 <option value="1" <?php if($item['in_stock']==1) echo 'selected'; ?>>In Stock</option>

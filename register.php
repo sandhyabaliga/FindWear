@@ -20,18 +20,20 @@ if(isset($_POST['register']))
     }
 
     // Check duplicate email
-    $check = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
-
+$checkStmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email=?");
+mysqli_stmt_bind_param($checkStmt, "s", $email);
+mysqli_stmt_execute($checkStmt);
+$check = mysqli_stmt_get_result($checkStmt);
     if(mysqli_num_rows($check) > 0)
     {
         echo "<script>alert('Email already exists!');</script>";
     }
     else
     {
-        $sql = "INSERT INTO users(full_name,email,password,phone,role,status)
-                VALUES('$fullname','$email','$password','$phone','$role','$status')";
+       $stmt = mysqli_prepare($conn, "INSERT INTO users(full_name,email,password,phone,role,status) VALUES(?,?,?,?,?,?)");
+mysqli_stmt_bind_param($stmt, "ssssss", $fullname, $email, $password, $phone, $role, $status);
 
-        if(mysqli_query($conn,$sql))
+if(mysqli_stmt_execute($stmt))
         {
             echo "<script>alert('Registration Successful'); window.location='login.php';</script>";
         }

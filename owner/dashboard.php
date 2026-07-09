@@ -35,11 +35,11 @@ if($_SESSION['role']!="shop_owner")
 
 <h2>Owner Dashboard</h2>
 
-<h3>Welcome <?php echo $_SESSION['name']; ?></h3>
+<h3>Welcome <?php echo htmlspecialchars($_SESSION['name']); ?></h3>
 
 <br>
 
-<a href="add_shop.php">
+<a href="edit_shop.php">
 <button>Add / Edit Shop</button>
 </a>
 

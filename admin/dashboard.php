@@ -30,7 +30,7 @@ if($_SESSION['role']!="admin")
 
 <h2>Admin Dashboard</h2>
 
-<h3>Welcome, <?php echo $_SESSION['name']; ?></h3>
+<h3>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></h3>
 
 <br>
 

@@ -2,6 +2,18 @@
 session_start();
 include("../db.php");
 
+if (!isset($_SESSION['id']) || $_SESSION['role'] != 'shop_owner') {
+    header("Location: ../login.php");
+    exit();
+}
+
+$owner_id = $_SESSION['id'];
+$existing = mysqli_query($conn, "SELECT id FROM shops WHERE owner_id='$owner_id'");
+if (mysqli_num_rows($existing) > 0) {
+    header("Location: edit_shop.php");
+    exit();
+}
+
 if(isset($_POST['save']))
 {
     $owner_id = $_SESSION['id'];
@@ -12,12 +24,10 @@ if(isset($_POST['save']))
     $phone = $_POST['phone'];
     $google_map = $_POST['google_map'];
 
-    $sql = "INSERT INTO shops
-    (owner_id,shop_name,address,area,city,phone,google_map)
-    VALUES
-    ('$owner_id','$shop_name','$address','$area','$city','$phone','$google_map')";
+    $stmt = mysqli_prepare($conn, "INSERT INTO shops (owner_id,shop_name,address,area,city,phone,google_map) VALUES (?,?,?,?,?,?,?)");
+mysqli_stmt_bind_param($stmt, "issssss", $owner_id, $shop_name, $address, $area, $city, $phone, $google_map);
 
-    if(mysqli_query($conn,$sql))
+if(mysqli_stmt_execute($stmt))
     {
         echo "<script>alert('Shop Added Successfully');</script>";
     }

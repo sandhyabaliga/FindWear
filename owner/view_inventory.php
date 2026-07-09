@@ -62,15 +62,15 @@ $result = mysqli_query($conn, $sql);
 
 <tr>
 
-<td><?php echo $row['product_name']; ?></td>
+<td><?php echo htmlspecialchars($row['product_name']); ?></td>
 
-<td><?php echo $row['quantity']; ?></td>
+<td><?php echo htmlspecialchars($row['quantity']); ?></td>
 
-<td>₹<?php echo $row['price']; ?></td>
+<td>₹<?php echo htmlspecialchars($row['price']); ?></td>
 
-<td><?php echo $row['size']; ?></td>
+<td><?php echo htmlspecialchars($row['size']); ?></td>
 
-<td><?php echo $row['color']; ?></td>
+<td><?php echo htmlspecialchars($row['color']); ?></td>
 
 <td>
 <?php

@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+
 include("../db.php");
 
 $categories=mysqli_query($conn,"SELECT * FROM categories");
@@ -13,12 +19,9 @@ $category=$_POST['category'];
 
 $gender=$_POST['gender'];
 
-mysqli_query($conn,"
-INSERT INTO products
-(product_name,category_id,gender)
-VALUES
-('$product','$category','$gender')
-");
+$stmt = mysqli_prepare($conn, "INSERT INTO products (product_name,category_id,gender) VALUES (?,?,?)");
+mysqli_stmt_bind_param($stmt, "sis", $product, $category, $gender);
+mysqli_stmt_execute($stmt);
 
 echo "<script>alert('Product Added');</script>";
 

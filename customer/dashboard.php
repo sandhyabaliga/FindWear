@@ -19,7 +19,7 @@ if ($_SESSION['role'] != 'customer') {
 </head>
 <body>
 <div class="form-container">
-<h2>Welcome, <?php echo $_SESSION['name']; ?>!</h2>
+<h2>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>!</h2>
 <p>Use the search to find clothes near you.</p>
 <br>
 <a href="../search.php"><button>🔍 Search Clothes</button></a>

@@ -104,17 +104,17 @@ if(isset($_GET['search']))
 
 <div class="card">
 
-<h2><?php echo $row['shop_name']; ?></h2>
+<h2><?php echo htmlspecialchars($row['shop_name']); ?></h2>
 
-<p><b>Product:</b> <?php echo $row['product_name']; ?></p>
+<p><b>Product:</b> <?php echo htmlspecialchars($row['product_name']); ?></p>
 
-<p><b>Color:</b> <?php echo $row['color']; ?></p>
+<p><b>Color:</b> <?php echo htmlspecialchars($row['color']); ?></p>
 
-<p><b>Size:</b> <?php echo $row['size']; ?></p>
+<p><b>Size:</b> <?php echo htmlspecialchars($row['size']); ?></p>
 
-<p><b>Price:</b> ₹<?php echo $row['price']; ?></p>
+<p><b>Price:</b> ₹<?php echo htmlspecialchars($row['price']); ?></p>
 
-<p><b>Available Quantity:</b> <?php echo $row['quantity']; ?></p>
+<p><b>Available Quantity:</b> <?php echo htmlspecialchars($row['quantity']); ?></p>
 
 <p><b>Address:</b>
 <?php
@@ -124,10 +124,10 @@ echo $row['address'] . ", " .
 ?>
 </p>
 
-<p><b>Phone:</b> <?php echo $row['phone']; ?></p>
+<p><b>Phone:</b> <?php echo htmlspecialchars($row['phone']); ?></p>
 
 <p>
-<a target="_blank" href="<?php echo $row['google_map']; ?>">
+<a target="_blank" href="<?php echo htmlspecialchars($row['google_map']); ?>">
 📍 Open Google Maps
 </a>
 </p>
