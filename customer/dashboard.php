@@ -10,6 +10,9 @@ if ($_SESSION['role'] != 'customer') {
     header("Location: ../login.php");
     exit();
 }
+
+$base = "../";
+include("../navbar.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,13 +21,19 @@ if ($_SESSION['role'] != 'customer') {
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<div class="form-container">
-<h2>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>!</h2>
-<p>Use the search to find clothes near you.</p>
-<br>
-<a href="../search.php"><button>🔍 Search Clothes</button></a>
-<br><br>
-<a href="../logout.php"><button>Logout</button></a>
+<div class="dashboard-hero">
+<h2>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></h2>
+<p>Find clothes available at shops near you.</p>
+</div>
+
+<div class="dashboard-grid">
+
+<a class="dash-card" href="../search.php">
+<span class="dash-icon">🔍</span>
+<h3>Search Clothes</h3>
+<p>Search by product name and area</p>
+</a>
+
 </div>
 </body>
 </html>

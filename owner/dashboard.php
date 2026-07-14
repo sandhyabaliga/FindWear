@@ -15,6 +15,8 @@ if($_SESSION['role']!="shop_owner")
     header("Location: ../login.php");
     exit();
 }
+$base = "../";
+include("../navbar.php");
 ?>
 
 
@@ -31,34 +33,29 @@ if($_SESSION['role']!="shop_owner")
 
 <body>
 
-<div class="form-container">
-
+<div class="dashboard-hero">
 <h2>Owner Dashboard</h2>
+<p>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></p>
+</div>
 
-<h3>Welcome <?php echo htmlspecialchars($_SESSION['name']); ?></h3>
+<div class="dashboard-grid">
 
-<br>
-
-<a href="edit_shop.php">
-<button>Add / Edit Shop</button>
+<a class="dash-card" href="add_shop.php">
+<span class="dash-icon">🏬</span>
+<h3>My Shop</h3>
+<p>Add or update your shop details</p>
 </a>
 
-<br><br>
-
-<a href="add_inventory.php">
-<button>Add Inventory</button>
+<a class="dash-card" href="add_inventory.php">
+<span class="dash-icon">➕</span>
+<h3>Add Inventory</h3>
+<p>List a new product in your shop</p>
 </a>
 
-<br><br>
-
-<a href="view_inventory.php">
-<button>View Inventory</button>
-</a>
-
-<br><br>
-
-<a href="../logout.php">
-<button>Logout</button>
+<a class="dash-card" href="view_inventory.php">
+<span class="dash-icon">📦</span>
+<h3>View Inventory</h3>
+<p>See and manage everything you've listed</p>
 </a>
 
 </div>

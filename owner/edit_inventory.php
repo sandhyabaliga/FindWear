@@ -41,6 +41,9 @@ if (isset($_POST['update'])) {
     echo "<script>alert('Updated Successfully'); window.location='view_inventory.php';</script>";
     exit();
 }
+
+$base = "../";
+include("../navbar.php");
 ?>
 <!DOCTYPE html>
 <html>

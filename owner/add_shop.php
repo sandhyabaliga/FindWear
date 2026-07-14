@@ -32,6 +32,9 @@ if(mysqli_stmt_execute($stmt))
         echo "<script>alert('Shop Added Successfully');</script>";
     }
 }
+
+$base = "../";
+include("../navbar.php");
 ?>
 
 <!DOCTYPE html>

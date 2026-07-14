@@ -26,6 +26,9 @@ mysqli_stmt_execute($stmt);
 echo "<script>alert('Product Added');</script>";
 
 }
+
+$base = "../";
+include("../navbar.php");
 ?>
 
 <!DOCTYPE html>

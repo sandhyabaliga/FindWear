@@ -30,6 +30,9 @@ mysqli_stmt_execute($stmt);
     window.location='dashboard.php';
     </script>";
 }
+
+$base = "../";
+include("../navbar.php");
 ?>
 
 <!DOCTYPE html>
@@ -54,37 +57,37 @@ mysqli_stmt_execute($stmt);
 <input
 type="text"
 name="shop_name"
-value="<?php echo $shop['shop_name']; ?>"
+value="<?php echo htmlspecialchars($shop['shop_name']); ?>"
 required>
 
 <input
 type="text"
 name="address"
-value="<?php echo $shop['address']; ?>"
+value="<?php echo htmlspecialchars($shop['address']); ?>"
 required>
 
 <input
 type="text"
 name="area"
-value="<?php echo $shop['area']; ?>"
+value="<?php echo htmlspecialchars($shop['area']); ?>"
 required>
 
 <input
 type="text"
 name="city"
-value="<?php echo $shop['city']; ?>"
+value="<?php echo htmlspecialchars($shop['city']); ?>"
 required>
 
 <input
 type="text"
 name="phone"
-value="<?php echo $shop['phone']; ?>"
+value="<?php echo htmlspecialchars($shop['phone']); ?>"
 required>
 
 <input
 type="text"
 name="google_map"
-value="<?php echo $shop['google_map']; ?>">
+value="<?php echo htmlspecialchars($shop['google_map']); ?>">
 
 <button
 type="submit"

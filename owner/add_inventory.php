@@ -45,6 +45,9 @@ if (isset($_POST['save'])) {
         $products = mysqli_query($conn, "SELECT * FROM products ORDER BY product_name");
     }
 }
+
+$base = "../";
+include("../navbar.php");
 ?>
 <!DOCTYPE html>
 <html>

@@ -26,6 +26,9 @@ WHERE shops.owner_id = '$owner_id'
 ";
 
 $result = mysqli_query($conn, $sql);
+
+$base = "../";
+include("../navbar.php");
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +48,8 @@ $result = mysqli_query($conn, $sql);
 
 <h2>My Inventory</h2>
 
-<table border="1" width="100%" cellpadding="10">
-
+<div class="table-wrap">
+<table class="styled">
 <tr>
 <th>Product</th>
 <th>Quantity</th>
@@ -74,18 +77,18 @@ $result = mysqli_query($conn, $sql);
 
 <td>
 <?php
-echo ($row['in_stock'] == 1) ? "In Stock" : "Out of Stock";
+echo ($row['in_stock'] == 1) ? "<span class='badge-instock'>In Stock</span>" : "<span class='badge-outstock'>Out of Stock</span>";
 ?>
 </td>
 
 <td>
-<a href="edit_inventory.php?id=<?php echo $row['id']; ?>">
+<a class="action-link action-edit" href="edit_inventory.php?id=<?php echo $row['id']; ?>">
 Edit
 </a>
 </td>
 
 <td>
-<a href="delete_inventory.php?id=<?php echo $row['id']; ?>">
+<a class="action-link action-delete" href="delete_inventory.php?id=<?php echo $row['id']; ?>">
 Delete
 </a>
 </td>
@@ -95,6 +98,7 @@ Delete
 <?php } ?>
 
 </table>
+</div>
 
 </div>
 

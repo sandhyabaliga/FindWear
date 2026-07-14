@@ -16,6 +16,9 @@ products.gender
 FROM products
 JOIN categories
 ON products.category_id=categories.id");
+
+$base = "../";
+include("../navbar.php");
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +47,8 @@ ON products.category_id=categories.id");
 
 <br><br>
 
-<table border="1" cellpadding="10">
-
+<div class="table-wrap">
+<table class="styled">
 <tr>
 
 <th>Name</th>
@@ -67,18 +70,16 @@ while($row=mysqli_fetch_assoc($result))
 
 <tr>
 
-<td><?php echo $row['product_name'];?></td>
+<td><?php echo htmlspecialchars($row['product_name']); ?></td>
 
-<td><?php echo $row['category_name'];?></td>
+<td><?php echo htmlspecialchars($row['category_name']); ?></td>
 
-<td><?php echo $row['gender'];?></td>
+<td><?php echo htmlspecialchars($row['gender']); ?></td>
 
 <td>
 
-<a href="delete_product.php?id=<?php echo $row['id'];?>">
-
+<a class="action-link action-delete" href="delete_product.php?id=<?php echo $row['id'];?>">
 Delete
-
 </a>
 
 </td>
@@ -92,6 +93,7 @@ Delete
 ?>
 
 </table>
+</div>
 
 </div>
 

@@ -12,6 +12,8 @@ if($_SESSION['role']!="admin")
     header("Location: ../login.php");
     exit();
 }
+$base = "../";
+include("../navbar.php");
 ?>
 
 <!DOCTYPE html>
@@ -26,28 +28,23 @@ if($_SESSION['role']!="admin")
 
 <body>
 
-<div class="form-container">
-
+<div class="dashboard-hero">
 <h2>Admin Dashboard</h2>
+<p>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></p>
+</div>
 
-<h3>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></h3>
+<div class="dashboard-grid">
 
-<br>
-
-<a href="approve_users.php">
-<button>Approve Shop Owners</button>
+<a class="dash-card" href="approve_users.php">
+<span class="dash-icon">✅</span>
+<h3>Approve Shop Owners</h3>
+<p>Review and approve pending shop registrations</p>
 </a>
 
-<br><br>
-
-<a href="manage_products.php">
-    <button>Manage Products</button>
-</a>
-
-<br><br>
-
-<a href="../logout.php">
-<button>Logout</button>
+<a class="dash-card" href="manage_products.php">
+<span class="dash-icon">👕</span>
+<h3>Manage Products</h3>
+<p>Add or remove product categories</p>
 </a>
 
 </div>

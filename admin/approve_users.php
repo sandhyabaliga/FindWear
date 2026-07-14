@@ -12,6 +12,9 @@ $result=mysqli_query($conn,
 "SELECT * FROM users
 WHERE role='shop_owner'
 AND status='pending'");
+
+$base = "../";
+include("../navbar.php");
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +35,8 @@ AND status='pending'");
 
 <h2>Pending Shop Owners</h2>
 
-<table border="1" cellpadding="10">
-
+<div class="table-wrap">
+<table class="styled">
 <tr>
 
 <th>Name</th>
@@ -53,17 +56,21 @@ while($row=mysqli_fetch_assoc($result))
 
 <tr>
 
-<td><?php echo $row['full_name']; ?></td>
+<td><?php echo htmlspecialchars($row['full_name']); ?></td>
 
-<td><?php echo $row['email']; ?></td>
+<td><?php echo htmlspecialchars($row['email']); ?></td>
 
 <td>
 
-<a href="approve.php?id=<?php echo $row['id']; ?>">
+<td>
+
+<a class="action-link action-edit" href="approve.php?id=<?php echo $row['id']; ?>">
 
 Approve
 
 </a>
+
+</td>
 
 </td>
 
@@ -76,6 +83,8 @@ Approve
 ?>
 
 </table>
+</div>
+
 
 </div>
 

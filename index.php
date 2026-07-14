@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 include("db.php");
 ?>
 
@@ -17,23 +18,7 @@ include("db.php");
 
 <header>
 
-    <div class="logo">
-        👕 FindWear
-    </div>
-
-    <nav>
-
-    <a href="#">Home</a>
-
-    <a href="#">Categories</a>
-
-    <a href="#">How It Works</a>
-
-    <a href="#">Contact</a>
-
-    <a href="login.php" class="login-btn">Login</a>
-    <a href="register.php" class="register-btn">Register</a>
-</nav>
+ <?php include("navbar.php"); ?>
 
 </header>
 
